@@ -1,4 +1,6 @@
 // Assignment code here
+window.alert("Welcome to the Password Generator");
+
 
 
 // Get references to the #generate element
