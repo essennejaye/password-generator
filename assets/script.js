@@ -14,72 +14,73 @@ function getPasswordLength() {
     return passwordLength;
   }
 }
-// create array with boolean types to hold user choices about character types
+// assign integers to user character type selections and create an array to hold user selections
 function getUserSelection() {
   var userSelection = [];
-  var s = confirm("Do you want to include numbers in your password?");
-  userSelection.push(s);
-  var s2 = confirm("Do you want to include lowercase letters in your password?");
-  userSelection.push(s2);
-  var s3 = confirm("Do you want to include uppercase letters in your password?");
-  userSelection.push(s3);
-  var s4 = confirm("Do you want to include special characters in your password?");
-  userSelection.push(s4);
-  console.log(userSelection);
-  return userSelection;
+  var numberType = confirm(" Would you like to include numbers in your password?");
+  if (numberType === true) {
+    userSelection.push(0);
+  }
+  var lowCaseType = confirm(" Would you like to include lowercase letters in your password?");
+  if (lowCaseType === true) {
+    userSelection.push(1);
+  }
+  var upCaseType = confirm(" Would you like to include uppercase letters in your password?");
+  if (upCaseType === true) {
+    userSelection.push(2);
+  }
+  var specialType = confirm(" Would you like to include special characters in your password?");
+  if (specialType === true) {
+    userSelection.push(3);
+  }
+  // make sure at least one character type is selected
+  if (userSelection.length > 0) {
+    return userSelection;
+  } else {
+    alert("You must choose at least one character type!");
+    getUserSelection();
+  }
 }
-// generate password based on length and user choices about characters
+// generate random password
 function generatePassword() {
-  var length = getPasswordLength();
-  console.log(length);
-  var choice = getUserSelection();
-  // random string generator
-  var i = 0;
   var passwordString = "";
+  var length = getPasswordLength();
+  var charTypes = getUserSelection();
+  // switch on the character type at the specified array location
   for (i = 0; i < length; i++) {
-    switch (Math.floor(Math.random() * 4 + 1)) {
-      case 1: // digit
-        if (choice[0] === true) {
-          passwordString += (Math.floor(Math.random() * 9)).toString();
-          console.log(i);
-
-          break;
-        } else {
-          break;
-        }
-      case 2: // small letter
-        if (choice[1] === true) {
-          passwordString += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-          console.log(i);
-
-          break;
-        } else {
-          break;
-        }
-      case 3: // big letter
-        if (choice[2] === true) {
-          passwordString += String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-          console.log(i);
-
-          break;
-        } else {
-          break;
-        }
-      case 4: // special characters
-        if (choice[3] === true) {
-          passwordString += String.fromCharCode(Math.floor(Math.random() * 14) + 33);
-          console.log(i);
-
-          break;
-        } 
+    var randomSelection = Math.floor(Math.random() * charTypes.length);
+    var typeSelector = charTypes[randomSelection];
+    switch (typeSelector) {
+      case 0: // number
+        passwordString += (Math.floor(Math.random() * 9)).toString();
+        break;
+      case 1: // small letter
+        passwordString += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+        break;
+      case 2: // big letter
+        passwordString += String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+        break;
+      case 3: // special characters
+        passwordString += String.fromCharCode(Math.floor(Math.random() * 14) + 33);
+        break;
       default:
+        console.log("This didn't trigger any case, please review.");
         break;
     }
   }
-  console.log(passwordString);
-  console.log(passwordString.length);
+  console.log("password length is " + passwordString.length);
   return passwordString;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 // Get references to the #generate element
@@ -97,3 +98,31 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 generatePassword();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
