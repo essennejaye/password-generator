@@ -18,6 +18,9 @@
 * WHEN the password is generated
 * THEN the password is either displayed in an alert or written to the page
 
+![](assets\images\password_screenshot1.png)
+![](assets\images\password_screenshot2.png)
+
 ``` JS 
 function generatePassword() {
   var length = getPasswordLength();
@@ -49,5 +52,4 @@ function generatePassword() {
   return passwordString;
 }
 ```
-![](assets\images\password_screenshot1.png)
-![](assets\images\password_screenshot2.png)
+
