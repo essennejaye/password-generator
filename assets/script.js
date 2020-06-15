@@ -19,7 +19,7 @@ function getUserSelection() {
   while (userSelection.length < 1) {
     if (!firstTime) alert("You must choose at least one character type!");
     firstTime = false;
-  // assign integers to user character type selections and create an array to hold user selections
+    // assign integers to user character type selections and create an array to hold user selections
     var numberType = confirm(" Would you like to include numbers in your password?");
     if (numberType === true) {
       userSelection.push(0);
@@ -66,7 +66,6 @@ function generatePassword() {
         break;
     }
   }
-  console.log(passwordString);
   return passwordString;
 }
 // Get references to the #generate element
