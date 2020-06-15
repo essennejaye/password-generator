@@ -49,7 +49,7 @@ function generatePassword() {
   return passwordString;
 }
 ```
-![](assets\images\password_screenshot1.png)
-![](assets\images\password_screenshot2.png)
+![](assets/images/password_screenshot1.png)
+![](assets/images/password_screenshot2.png)
 
 https://essennejaye.github.io/password-generator/
